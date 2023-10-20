@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { SideBar, PostItem, User } from "../components";
+import styled from "@emotion/styled";
+import { PostItem, SideBar } from "../components";
 
 const Home = () => {
   return (
@@ -9,7 +9,6 @@ const Home = () => {
         <ContentsBox>
           <PostItem />
         </ContentsBox>
-        <User />
       </HomeBox>
     </HomeArea>
   );

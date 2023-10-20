@@ -1,14 +1,14 @@
-import { createGlobalStyle } from "styled-components";
+import { css, Global } from "@emotion/react";
 
-const GlobalStyle = createGlobalStyle`
-  *{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  body{
-    box-sizing: border-box;
-  }
-`
-
-export default GlobalStyle;
+export const global = (
+  <Global
+    styles={css`
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        outline: none;
+      }
+    `}
+  />
+);
