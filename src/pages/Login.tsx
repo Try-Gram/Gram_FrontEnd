@@ -1,7 +1,27 @@
 import styled from "@emotion/styled";
 import { SiKakaotalk } from "react-icons/si";
-import { FcGoogle } from "react-icons/fc";
 import instagram_logo from "../assets/image/instagram_logo.png";
+import KakaoLogin from "react-kakao-login";
+
+const SocialKakaoLogin = () => {
+  const kakaoClientId = "44eba3f1a1639a31f0e9f47e432bb4e1";
+  const kakaoOnSuccess = async (data: any) => {
+    console.log(data);
+    const idToken = data.response.access_token; // 엑세스 토큰 백엔드로 전달
+  };
+  const kakaoOnFailure = (error: any) => {
+    console.log(error);
+  };
+  return (
+    <>
+      <KakaoLogin
+        token={kakaoClientId}
+        onSuccess={kakaoOnSuccess}
+        onFail={kakaoOnFailure}
+      />
+    </>
+  );
+};
 
 const Login = () => {
   return (
@@ -26,16 +46,9 @@ const Login = () => {
               <Line />
             </LineBox>
             <GoogleKaKaoButton>
-              <KaKaoIcon />
-              <ButtonContent>Kakao로 로그인</ButtonContent>
+              <SocialKakaoLogin />
             </GoogleKaKaoButton>
-            <GoogleKaKaoButton>
-              <GoogleIcon />
-              <ButtonContent>Google로 로그인</ButtonContent>
-            </GoogleKaKaoButton>
-            <PasswordSearch>
-              <SearchContent>비밀번호를 잊으셨나요?</SearchContent>
-            </PasswordSearch>
+            <SearchContent>비밀번호를 잊으셨나요?</SearchContent>
           </LoginForm>
         </LoginBox>
       </LoginContents>
@@ -59,36 +72,35 @@ const LoginArea = styled.div`
 `;
 
 const LoginBox = styled.div`
-  width: 350px;
+  width: 22rem;
   height: 100%;
   border: 1px solid #ced4da;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem;
 `;
 
-const LoginContents = styled.div`
-  height: 430px;
-`;
+const LoginContents = styled.div``;
 
 const Logo = styled.img`
   width: 100%;
-  height: 30%;
-  padding: 1rem 5rem;
   cursor: pointer;
+  padding: 1rem 4rem;
 `;
 
 const LoginForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
+  gap: 1rem;
 `;
 
 const InputBox = styled.div`
   width: 80%;
-  height: 40px;
-  margin-bottom: 1rem;
+  height: 2.5rem;
 `;
 
 const IdPasswordInput = styled.input`
@@ -100,12 +112,13 @@ const IdPasswordInput = styled.input`
 
 const LoginButton = styled.button`
   width: 80%;
-  height: 35px;
+  height: 2.2rem;
   background-color: #339af0;
   border: none;
   border-radius: 12px;
   font-weight: 600;
   color: white;
+  cursor: pointer;
 `;
 
 const LineBox = styled.div`
@@ -113,14 +126,13 @@ const LineBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0.6rem 0 1rem 0;
 `;
 
 const LineContent = styled.div`
   width: 20%;
   font-weight: 600;
   color: #868e96;
-  font-size: 14px;
+  font-size: 0.8rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,7 +144,7 @@ const Line = styled.div`
   border: 1px solid #ced4da;
 `;
 
-const GoogleKaKaoButton = styled.button`
+const GoogleKaKaoButton = styled.div`
   width: 70%;
   cursor: pointer;
   display: flex;
@@ -140,7 +152,6 @@ const GoogleKaKaoButton = styled.button`
   align-items: center;
   background: none;
   border: none;
-  margin-bottom: 0.8rem;
 `;
 
 const ButtonContent = styled.span`
@@ -156,20 +167,14 @@ const KaKaoIcon = styled(SiKakaotalk)`
   border-radius: 5px;
 `;
 
-const GoogleIcon = styled(FcGoogle)`
-  font-size: 1.4rem;
-`;
-
-const PasswordSearch = styled.div``;
-
 const SearchContent = styled.a`
   cursor: pointer;
   font-size: 0.8rem;
 `;
 
 const JoinBox = styled.div`
-  width: 350px;
-  height: 50px;
+  width: 22rem;
+  height: 3.125rem;
   border: 1px solid #ced4da;
   margin-top: 1rem;
   display: flex;

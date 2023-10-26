@@ -8,6 +8,8 @@ const Home = () => {
       <HomeBox>
         <ContentsBox>
           <PostItem />
+          <PostItem />
+          <PostItem />
         </ContentsBox>
       </HomeBox>
     </HomeArea>
@@ -18,18 +20,19 @@ export default Home;
 
 const HomeArea = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
 `;
 
 const HomeBox = styled.div`
-  width: calc(85% - 4rem);
-  display: flex;
-  margin: 1rem 2rem 0 2rem;
+  width: 85%;
+  margin: 1rem 0;
 `;
 
 const ContentsBox = styled.div`
-  width: 70%;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 2rem;
 `;
